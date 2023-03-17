@@ -1,0 +1,35 @@
+<div class="form-bg"></div> <!-- Agregamos un div para la imagen de fondo difuminada -->
+<form class="login-form login" action="#" method="post" #loginForm="ngForm" (ngSubmit)="signIn()"> 
+  <div class="form-inner">
+    <div class="text-center mb-4">
+      <img class="mb-3" src="https://res.cloudinary.com/dx46uo2cv/image/upload/v1675940571/Logo_Librer%C3%ADa_Lineal_Azul_Rosa__1_-removebg-preview_vo8d1z.png" alt="Logo" width="85" height="85">
+      <h2 class="form-title mb-3">Log In</h2>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="username" name="username"  placeholder="Nombre de Usuario" required ngModel name="username" minlength="3" >
+      
+      <label for="username">Username</label>
+
+      <span class="form-text text-danger" *ngIf="nombreValido('username')">
+        Username must be longer than 3 letters
+      </span>
+
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="password" name="password"  placeholder="**************" required ngModel name="password" minlength="3" >
+
+
+      <label for="password">Password</label>
+
+      <span class="form-text text-danger" *ngIf="nombreValido('password')" >
+        Password must be longer than 3 letters
+      </span>
+
+    </div>
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid"
+    >Log in</button>
+    <button type="submit" class="btn btn-secondary w-100" id="register-btn" [routerLink]="['register']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register</button>
+    <button button type="button" class="btn btn-secondary w-100" href="#" [routerLink]="['/']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Back to Home</button>
+  </div>
+</form>
+

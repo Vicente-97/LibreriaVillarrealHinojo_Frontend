@@ -1,0 +1,178 @@
+<app-navbar></app-navbar>
+ 
+<section class="section">
+  <div class="container py-5">
+    
+    <div class="row">
+      
+      <div class="col-lg-12" >
+        
+        <div class="card mb-4">
+          <h3 class="titulo">Update book</h3>
+            <form class="form" action="#" (ngSubmit)="saveUpdate()" [formGroup]="myForm" enctype="multipart/form-data">
+              <div class="form-group" align="center" >
+                <label for="input2"></label>
+                <img src="{{book.img}}" alt="avatar"
+                     class="rounded-circle img-fluid imgRedonda"  > 
+                    </div>
+           
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Isbn</p>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Isbn" formControlName="isbn" [value]="book.isbn" readonly   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+               
+                             
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Título:</p>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="title" formControlName="title"  [placeholder]="book.title" />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('title')">
+                  Debe de ser un titulo de más de 5 letras y unico.
+                </span>
+      
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Fecha :</p>
+              </div>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" placeholder="Date Book" formControlName="date" [placeholder]="book.dateBook"  />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('date')">
+                  La fecha es requerida.
+                </span>
+              </div>
+              
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">author:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Author" formControlName="author"  [placeholder]="book.author"  />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('author')">
+                  El campo author es requerido.
+                </span>
+              </div>
+              
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Price:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="number" class="form-control" placeholder="price" formControlName="price" [placeholder]="book.price"  />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('price')">
+                  el precio debe de ser mayor de 5
+                </span>
+               
+              </div>
+              
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Stock:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="number" class="form-control" placeholder="Stock" formControlName="stock" [placeholder]="book.stock" />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('stock')">
+                  Debe de tener un stock mayor que 5
+                </span>
+              </div>
+          
+          
+
+               <hr>
+          <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Category:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <select name="opcionSeleccionado" formControlName="opcionSeleccionado">
+                  
+                  <option *ngFor="let category of categories" [value]="category.name">
+                      {{category.name}}
+                  </option>
+              </select>
+               
+              </div>
+              
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Picture:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="file" class="form-control" placeholder="Photo" formControlName="fotoPerfil" name="fotoPerfil" (change)="onFileChange($event)"/>
+            
+              <i class="fa fa-lock form-control-feedback"></i>
+               
+              </div>
+              
+            </div>
+            
+            
+            
+            <div align="right">
+                <button type="submit" class="btn btn-primary espacioButton" [disabled]="myForm.invalid">Update Book</button>
+                <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/books/list']" routerLinkActive="active" >Back</button>
+              </div>
+              
+          
+      </div>
+              </div>
+      </form>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<app-footer></app-footer>
+
+ 
+ 
+<!-- <select name="opcionSeleccionado" formControlName="opcionSeleccionado">
+                  
+  <option *ngFor="let category of categories" [value]="category.name">
+      {{category.name}}
+  </option>
+</select> -->
+
+ 
+ 

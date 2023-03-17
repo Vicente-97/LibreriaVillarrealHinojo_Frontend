@@ -1,0 +1,37 @@
+.imgRedonda {
+    width:110px;
+    height:80px;
+    border-radius:100px;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+  }
+  
+  footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+  }
+
+  .cart-icon .cart-item-count {
+    animation: bounce 0.5s;
+  }
+
+  
+  @keyframes bounce {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.5); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+  }
+
+
+  
+  
+  

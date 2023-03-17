@@ -1,0 +1,28 @@
+.imgRedonda {
+  width:120px;
+  height:125px;
+  border-radius:100px;
+}
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  #content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+  }
+  
+  #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+  }
+
+  .espacioButton{
+    margin: 1em;
+  }
+
+  .section{
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages6.alphacoders.com%2F348%2F348731.jpg&f=1&nofb=1&ipt=43d103699677cdeb562e799ab7081dbeb17a3b12cd375df1589e22de846d2a20&ipo=images");
+  }

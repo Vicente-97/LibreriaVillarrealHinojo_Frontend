@@ -1,0 +1,175 @@
+<app-navbar></app-navbar>
+ 
+<section class="section">
+  <div class="container py-5">
+    
+    <div class="row">
+      
+      <div class="col-lg-12" >
+        
+        <div class="card mb-4">
+          <h3 class="titulo">Add Book</h3>
+            <form class="form" action="#" (ngSubmit)="saveAdd()" [formGroup]="myForm" enctype="multipart/form-data">
+              
+           
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Isbn</p>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Isbn" formControlName="isbn"   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('isbn')">
+                  must be a valid ISBN,
+                  it must be a Isbn of more than 5 letters
+                </span>
+                             
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Tittle:</p>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="title" formControlName="title"   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('title')">
+                  It must be a title of more than 5 letters and unique
+                </span>
+      
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date:</p>
+              </div>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" placeholder="Date Book" formControlName="date"   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('date')">
+                  Date is required!
+                </span>
+              </div>
+              
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Author:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Author" formControlName="author"   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('author')">
+                  Author is required!
+                </span>
+              </div>
+              
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Price:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="number" class="form-control" placeholder="price" formControlName="price"   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('price')">
+                  The price must be greater than 5
+                </span>
+               
+              </div>
+              
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Stock:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="number" class="form-control" placeholder="Stock" formControlName="stock"   />
+                <i class="fa fa-user form-control-feedback"></i>
+      
+                <span class="form-text text-danger" *ngIf="isValidField('stock')">
+                  The stock must be greater than 5
+                </span>
+              </div>
+          
+          
+
+               <hr>
+          <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Category:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                
+                <select name="opcionSeleccionado" aria-labelledby="state"  aria-label="State" formControlName="opcionSeleccionado">
+                  
+                  <option *ngFor="let category of categories" [value]="category.name">
+                      {{category.name}}
+                  </option>
+              </select>
+               
+              </div>
+              
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Picture:</p>
+              </div>
+             
+              <div class="col-sm-9">
+                <input type="file" class="form-control" placeholder="Photo" formControlName="fotoPerfil" name="fotoPerfil" (change)="onFileChange($event)"/>
+            
+              <i class="fa fa-lock form-control-feedback"></i>
+               
+              </div>
+              
+            </div>
+            
+            
+            
+            <div align="right">
+                <button type="submit" class="btn btn-primary espacioButton" [disabled]="myForm.invalid">Add Book</button>
+                <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/books/list']" routerLinkActive="active" >Back</button>
+              </div>
+              
+          
+      </div>
+              </div>
+      </form>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<app-footer></app-footer>
+
+ 
+ 
+<!-- <select name="opcionSeleccionado" formControlName="opcionSeleccionado">
+                  
+  <option *ngFor="let category of categories" [value]="category.name">
+      {{category.name}}
+  </option>
+</select> -->

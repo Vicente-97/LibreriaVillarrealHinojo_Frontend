@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Books } from 'src/app/interfaces/bookInterface';
 import { environment } from '../../../environments/environment';
+import { BookShop } from '../../interfaces/bookshopInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,26 @@ export class BooksService {
   //Método para poder borrar un libro, recibe un id o name del libro mediante el cual lo busca y lo borra.
   deletBook(id:string):Observable<any>{
     return this.http.delete<any>(`${environment.apiUrl}/books/${id}`)
+  }
+
+  getLibraryofBook(id:string):Observable<BookShop[]>{
+    return this.http.get<BookShop[]>(`${environment.apiUrl}/avaible/${id}`)
+  }
+
+  putBookshop(jsonBook:any, jsonBookShop:any):Observable<any>{
+    const datos: FormData = new FormData();
+    datos.append('isbn', new Blob([JSON.stringify(jsonBook)], {type: 'application/json'}))
+    datos.append('name', new Blob([JSON.stringify(jsonBookShop)], {type: 'application/json'}))
+    
+    return this.http.put<any>(`${environment.apiUrl}/bookshop/`,datos)
+  }
+  
+  getBookShop(id:string){
+    return this.http.get<any>(`${environment.apiUrl}/bookshop/${id}`)
+  }
+
+  deleteBookshop(isbn:string, name:string):Observable<any>{
+    return this.http.delete<any>(`${environment.apiUrl}/bookshop/${isbn}/${name}`)
   }
 
 }

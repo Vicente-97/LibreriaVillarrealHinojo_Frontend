@@ -18,7 +18,7 @@ export class AuthService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  url:string = 'https://libreriavillarrealvicentebackend-production.up.railway.app/signin'
+  url:string = 'http://localhost:8080/signin'
  usuarioActual!:userCompleto
  
 

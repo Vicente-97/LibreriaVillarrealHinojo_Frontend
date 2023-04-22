@@ -6,6 +6,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CategoryService } from '../../categories/services/categories.service';
 import { UserService } from '../../users/services/user.service';
 import Swal from 'sweetalert2';
+import { BookShop } from 'src/app/interfaces/bookshopInterface';
+import { BookshopService } from 'src/app/bookshop/bookshop.service';
 
 
 @Component({
@@ -18,9 +20,10 @@ export class AddBookComponent implements OnInit {
 
   category!:Categories
   categories:Categories[]=[]
-  
+  Bookshop:BookShop[]=[]
 
-
+  librerias:BookShop[]=[]
+  libreria!:BookShop;
   json :any={
 
     isbn:'',
@@ -29,12 +32,14 @@ export class AddBookComponent implements OnInit {
     author:'',
     price:'',
     stock:'',
-    category:''
+    category:'',
+    // bookshop:[]
   }
 
 
 
-  constructor(private fb: FormBuilder, private router: Router, private servicio:BooksService, private servicioCat: CategoryService, private servicioUser:UserService) { }
+  constructor(private fb: FormBuilder, private router: Router, private servicio:BooksService, private servicioCat: CategoryService, private servicioUser:UserService,
+   private bookshopservice : BookshopService ) { }
 
 
   //Definimos nuestro Formulario Reactivve
@@ -46,6 +51,7 @@ export class AddBookComponent implements OnInit {
     price:['', [Validators.required, Validators.min(5) ]],
     stock:['', [Validators.required, Validators.min(5) ]],
     opcionSeleccionado:['', [Validators.required]],
+    // libreria:['', [Validators.required]],
     fotoPerfil:['',[Validators.required]],
     fileSource:['', [Validators.required]]
   });
@@ -60,6 +66,14 @@ export class AddBookComponent implements OnInit {
         console.log(err)
       },
     })
+    // this.bookshopservice.getShop().subscribe({
+    //   next:(resp)=> {
+    //     this.Bookshop=resp
+        
+    //   },
+    // })
+    
+    
 
 
   }
@@ -85,8 +99,9 @@ export class AddBookComponent implements OnInit {
       next:(resp)=> {
         this.category=resp
         this.json.category=this.category
+        // this.json.bookshop=this.librerias
         this.servicio.addBook(this.json,this.myForm.get('fileSource')?.value).subscribe({
-
+        
           next:(resp)=> {
             if(resp){
               window.location.reload()
@@ -115,6 +130,11 @@ export class AddBookComponent implements OnInit {
 
   }
 
+  agregarLibreria(){
+    this.librerias.push(this.myForm.get('libreria')?.value)
+    console.log(this.librerias);
+    
+  }
 
 
   save(){

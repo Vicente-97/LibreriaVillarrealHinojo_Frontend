@@ -27,3 +27,17 @@
   height:125px;
   border-radius:100px;
 }
+
+.form-container {
+  white-space: nowrap; /* para evitar que los formularios se rompan en varias líneas */
+}
+
+.form-container form {
+  display: inline-block;
+  width: 48%; /* ajusta el ancho de los formularios según sea necesario */
+  margin-right: 2%; /* margen derecho para separar los formularios */
+}
+
+.form-container form:last-child {
+  margin-right: 0; /* quitar margen derecho para el último formulario */
+}

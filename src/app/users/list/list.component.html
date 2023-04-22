@@ -9,7 +9,7 @@
  
 </div>
 
-<div class="row  d-flex justify-content-center w-100">
+<div class="row  d-flex justify-content-center w-100 table-responsive">
 
   
 <p-table #dt *ngIf="users" [value]="users"   [paginator]="true" 
@@ -33,6 +33,7 @@
           
           <th pSortableColumn="author">Email<p-sortIcon field="email"></p-sortIcon></th>
           <th>Img</th>
+          <th>rol</th>
           
         </tr>
     </ng-template>
@@ -44,6 +45,11 @@
           <td >{{users.name}}</td>
           <td >{{users.email}}</td>
           <td ><img [src]="users.img" class="imgRedonda" alt="imagenUser" width="120" height="120"></td>
+          <td >{{users.role}}</td>
+          <td *ngIf="users.username !=username"><label class="switch">
+            <input type="checkbox" (change)="actualizarAdmin(users.username)" [checked]="users.role === 'ADMIN'" />
+            <span class="slider"></span>
+          </label></td>
           
           <td *ngIf="users.username!=username">
             <!-- <button button type="button" class="btn btn-info espacio espacioButton" href="#" [routerLink]="['/user/updateUser', users.username]" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -52,6 +58,9 @@
             <button  *ngIf="isAdmin" button type="button" class="btn btn-danger" href="#" [routerLink]="['/user/deleteUser', users.username]" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16" >
                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
               </svg>Delete</button>
+
+              
+            <!-- <button (click)="actualizarAdmin(users.username)">Hacer administrador</button> -->
 
 
           </td>

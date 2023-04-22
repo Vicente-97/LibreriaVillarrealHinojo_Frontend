@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { user } from '../../interfaces/userCompleto';
 import { AuthService } from '../../auth/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -41,8 +42,33 @@ export class ListComponent {
         this.users=resp
       },
     })
+    
   }
 
+
+
+  actualizarAdmin(name:string){
+    const user = this.users.find((u) => u.username === name);
+  
+    if(user){
+      if (user.role === 'ADMIN') {
+        this.servicio.updateUserUser(name).subscribe({
+          next:(resp)=> {           
+          window.location.reload()
+          },
+        })
+      } else {
+       
+    this.servicio.updateUserAdmin(name).subscribe({
+      next:(resp)=> {        
+      window.location.reload()
+      },
+    })
+
+      }
+    }
+   
+  }
 
   
 }

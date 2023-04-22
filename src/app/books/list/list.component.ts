@@ -4,6 +4,9 @@ import { BooksService } from '../services/books.service';
 import { ShoppingCartService } from '../../shopping-cart/shopping-cart.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { AuthService } from '../../auth/services/auth.service';
+import { NgFor } from '@angular/common';
+import { NgForm } from '@angular/forms';
+import { BookShop } from 'src/app/interfaces/bookshopInterface';
 
 
 @Component({
@@ -29,7 +32,8 @@ export class ListComponent implements OnInit {
   jwt: string | null = null;
   public books :Books[]=[]
   public booksFullDatos:Books[]=[]
- 
+  public Bookshop:BookShop[]=[]
+  isbn :string |null = null;
   //variable para poder realizar el filtrado.
   filtroNombre!: string;
  
@@ -57,13 +61,12 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
    this.getBooks()
    this.jwt = localStorage.getItem('jwt');
-   
+  
    if(this.jwt){
      this.isAdmin = this.servicio.isUserAdmin(this.jwt);
    }
 
 
-   
 
   }
 
@@ -72,7 +75,17 @@ export class ListComponent implements OnInit {
     this.bookServ.getBooks().subscribe({
       next: (resp)=> {this.books=resp
         this.booksFullDatos=resp
+
+        // this.books.forEach(book => {
+        //   this.bookServ.getLibraryofBook(book.isbn).subscribe({
+        //     next:(resp)=> {
+        //       this.Bookshop=resp;
+        //     },
+        //    })
+        // });
+        
       }
+      
     })
 
   }

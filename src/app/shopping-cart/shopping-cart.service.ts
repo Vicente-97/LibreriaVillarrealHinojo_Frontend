@@ -75,7 +75,7 @@ export class ShoppingCartService {
     }
   }
 //Método para poder actualizar la cantidad.
-  actualizarCantidad(item: CarritoItem, nuevaCantidad?: number) {
+  actualizarCantidad(item: CarritoItem, nuevaCantidad?: any) {
     if (nuevaCantidad!<=item.book.stock) {
       item.cantidad = nuevaCantidad!;
     }
@@ -110,5 +110,9 @@ export class ShoppingCartService {
     return this.http.post<any>(`${environment.apiUrl}/buy`, datos)
   }
 
+  //Obtiene todas las compras de un usuario en concreto.
+  getBuys(username:string):Observable <any>{
+    return this.http.get<any>(`${environment.apiUrl}/buy/${username}`)
+  }
    
 }

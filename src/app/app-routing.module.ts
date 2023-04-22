@@ -40,6 +40,10 @@ const routes: Routes=[
     path: 'shopping',
     loadChildren: () => import('./shopping-cart/shopping.module').then( m => m.ShoppingModule ),canActivate:[AuthGuardian]
   },
+  { 
+    path: 'bookshop',
+    loadChildren: () => import('./bookshop/bookshop.module').then( m => m.BookshopModule ),canActivate:[AuthGuardian]
+  },
   
   {
     path: '**',

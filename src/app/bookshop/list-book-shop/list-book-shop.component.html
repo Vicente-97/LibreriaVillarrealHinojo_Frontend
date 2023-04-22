@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+
+<div class="row" *ngIf="bookShop.length!=0">
+  <div class="espacio">
+
+      <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg>Back</button>
+
+  </div>
+
+  <div class="espacio" *ngIf="isAdmin" >
+
+    <button button type="button" class="btn btn-primary" href="#" [routerLink]="['/bookshop/addBookShop']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>Add Bookshop</button>
+    
+  </div>
+
+
+<div class="card mb-3 espacio" *ngFor="let shop of bookShop" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{shop.img}}" alt="Imagen" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Name:</h5>
+        <p class="card-title">{{shop.name}}</p>
+        <h5 class="card-text">Location:</h5>
+        <p class="card-title">{{shop.location}}</p>
+        <h5 class="card-title">Description:</h5>
+        <p class="card-title">{{shop.description}}</p>
+
+        <p class="card-text"><small class="text-muted">Última actualización hace 3 minutos</small></p>
+
+        
+      </div>
+      <button *ngIf="isAdmin" button type="button" class="btn btn-danger" href="#" [routerLink]="['/bookshop/deleteBookshop',shop.name]" routerLinkActive="active" >Delete Bookshop</button>
+      &nbsp;&nbsp;&nbsp;
+      <button *ngIf="isAdmin" button type="button" class="btn btn-primary" href="#" [routerLink]="['/bookshop/updateBookShop',shop.name]" routerLinkActive="active" >Update Bookshop</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- separador -->
+<!-- <div class="row" *ngIf="bookShop.length!=0">
+    <div class="espacio">
+
+        <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+          </svg>Back</button>
+
+    </div>
+<div class="card cartas" style="width: 19rem;" *ngFor="let shop of bookShop">
+    <img src="{{shop.img}}" class="card-img-top" alt="imagen_Card">
+    <div class="card-body">
+        <label><b>Name:</b></label>
+      <h5 class="card-title">{{shop.name}}</h5>
+      <label><b>Location:</b></label>
+      <p class="card-text">{{shop.location}}</p>
+      <label><b>Description:</b></label>
+      <p class="card-text">{{shop.description}}</p>
+      
+     
+       <a href="#" class="btn btn-primary">Go somewhere</a> 
+      <br>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="bookShop.length==0">
+    <h4>We don't have books of that category</h4>
+    <div class="col-md-6 espaciado">
+
+        <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+          </svg>&nbsp;Back</button>
+
+    </div>
+</div> -->
+
+
+
+<app-footer></app-footer>

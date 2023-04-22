@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
   message!:string;
 
+  Buys:any[]=[]
 
 
   
@@ -54,6 +55,15 @@ export class NavbarComponent implements OnInit {
 
     if(this.jwt){
       this.isAdmin = this.servicio.isUserAdmin(this.jwt);
+    }
+
+    if(this.username){
+      this.serviceShop.getBuys(this.username).subscribe({
+        next:(resp)=> {
+          this.Buys=resp
+        },
+      })
+
     }
   }
 

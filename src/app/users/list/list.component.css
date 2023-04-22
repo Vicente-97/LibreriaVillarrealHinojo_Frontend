@@ -3,3 +3,123 @@
     height:80px;
     border-radius:100px;
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2ecc71;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2ecc71;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+  }
+
+  table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+
+  .botonRojo{
+    background-color: red;
+  }
+
+  .botonAmarillo{
+    background-color: rgb(34, 22, 197);
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #dddddd;
+  }
+  
+  @media (max-width: 600px) {
+    td, th {
+      display: block;
+      border: none;
+      text-align: left;
+    }
+  
+    td {
+      border-bottom: 1px solid #dddddd;
+      position: relative;
+      text-align: center;
+    }
+  
+    td::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      padding-right: 10px;
+      white-space: nowrap;
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    p-datatable.beatDatatable .ui-datatable .ui-datatable-thead .ui-state-default {
+      color: #000 !important;
+      line-height: 2 !important;
+      text-align: center !important;
+  }
+
+  .some-custom-class-name::ng-deep th {
+    background-color: blue !important;
+}
+
+
+
+  }
+  
+  

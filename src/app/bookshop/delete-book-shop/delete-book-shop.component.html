@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+
+
+<body>
+    <div class="container">
+      <h1 class="heading">Delete BookShop</h1>
+      <form class="form"  action="#" method="post" #deleteBookShop="ngForm" (ngSubmit)="deleteBookshop()">
+        <div class="form-group">
+          <label for="input2">Name:</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Enter the name" required [(ngModel)]="name" ngModel name="name" minlength="3" readonly>
+
+              <span class="form-text text-danger" *ngIf="nombreValido('name')" >
+                Name must be longer than 3 letters
+              </span>
+
+        </div>
+        <div class="form-group">
+            <label for="input2">Location:</label>
+            <input type="text" class="form-control" id="location" placeholder="Enter the location" required [(ngModel)]="location" ngModel name="location" minlength="5" readonly>
+  
+                <span class="form-text text-danger" *ngIf="nombreValido('location')" >
+                  Location must be longer than 5 letters
+                </span>
+  
+          </div>
+        <div class="form-group">
+          <label for="input2">Description:</label>
+              <textarea  class="form-control" id="descripcion" placeholder="Enter the Description" required [(ngModel)]="description" name="description" minlength="3" readonly></textarea>
+
+              <span class="form-text text-danger" *ngIf="nombreValido('description')" >
+                Description must be longer than 3 letters
+              </span>
+
+        
+        </div>
+       
+         <button type="submit" class="btn btn-primary espacioButton" [disabled]="deleteBookShop.invalid">Delete Bookshop</button>
+         <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/bookshop/list']" routerLinkActive="active" >Back</button>
+      </form>
+    </div>
+  </body>
+
+
+
+
+
+
+<app-footer></app-footer>

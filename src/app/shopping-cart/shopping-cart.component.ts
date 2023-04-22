@@ -53,7 +53,7 @@ export class ShoppingCartComponent {
     }
 
 // Método para poder updatear la cantidad de un objeto al comprar, con el máximo de stock permitido.
-    updateItem(item: CarritoItem, cantidad: number) {
+    updateItem(item: CarritoItem, cantidad: any) {
       if(cantidad<=item.book.stock){
         this.shopping.actualizarCantidad(item, cantidad);
         this.shopping.getTotal()

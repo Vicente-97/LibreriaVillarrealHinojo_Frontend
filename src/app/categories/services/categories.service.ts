@@ -38,4 +38,6 @@ export class CategoryService {
   getCategoryId(name:string){
     return this.http.get<Categories>(environment.apiUrl+'/category/'+name)
   }
+
+  
 }

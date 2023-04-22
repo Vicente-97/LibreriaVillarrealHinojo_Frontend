@@ -7,6 +7,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item espacioHome">
                 <a class="nav-link " aria-current="page" href="#" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
@@ -41,7 +42,9 @@
                 <a class="nav-link " aria-current="page" href="#" [routerLink]="['/chat/gpt']"routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Live Chat</a>
             </li>
               <!-- aqui termina dicha seccion de codigo. -->
-              
+              <li class="nav-item dropdown espacioHome">
+                <a class="nav-link " aria-current="page" href="#" [routerLink]="['/bookshop/list']"routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Bookshop</a>
+            </li>
               
             </ul>
             <div class="cart-badge" *ngIf="logueado">
@@ -79,7 +82,9 @@
                   <li><a class=" dropdown-item"  (click)="logOut()" [routerLink]="['/']" >Logout</a></li>
                   
                   <li><a class=" dropdown-item" href="#" [routerLink]="['/user/updateUser/',userDetails]" >Update profile</a></li>
-                      
+                  
+                  <li *ngIf="Buys.length"><a class=" dropdown-item" href="#" [routerLink]="['/shopping/listBuy',]" >Your Buys</a></li>
+
                 </ul>
               </li>
             </ul>

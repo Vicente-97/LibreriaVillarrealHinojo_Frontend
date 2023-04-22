@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { ShoppingRoutingModule } from './shopping-routing.module';
+import { UserBuysComponent } from './user-buys/user-buys.component';
 
 
 
@@ -15,6 +16,7 @@ import { ShoppingRoutingModule } from './shopping-routing.module';
 @NgModule({
   declarations: [
   ShoppingCartComponent,
+  UserBuysComponent,
   
   ],
   imports: [

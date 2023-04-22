@@ -45,4 +45,15 @@ export class UserService {
     return this.http.delete<any>(`${environment.apiUrl}/users/${username}`)
   }
 
+  //metodo para poder hacer a un usuario usuario admin
+  updateUserAdmin(username:string):Observable<any>{
+    return this.http.put<any>(`${environment.apiUrl}/userAdmin/${username}`, { esAdmin: true })
+  }
+
+  //metodo para poder hacer a un usuario usuario user
+  updateUserUser(username:string):Observable<any>{
+    return this.http.put<any>(`${environment.apiUrl}/userRolUser/${username}`, { esAdmin: false })
+  }
+
+
 }

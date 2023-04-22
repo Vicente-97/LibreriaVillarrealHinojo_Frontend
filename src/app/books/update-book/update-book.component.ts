@@ -8,6 +8,9 @@ import { CategoryService } from '../../categories/services/categories.service';
 import { UserService } from '../../users/services/user.service';
 import Swal from 'sweetalert2';
 import { Books } from '../../interfaces/bookInterface';
+import { BookShop } from 'src/app/interfaces/bookshopInterface';
+import { BookshopService } from '../../bookshop/bookshop.service';
+import { LoginComponent } from 'src/app/auth/login/login.component';
 
 
 @Component({
@@ -20,9 +23,19 @@ export class UpdateBookComponent implements OnInit {
   category!:Categories
   categories:Categories[]=[]
 
-  book:Books= {} as Books
-  
+  book:any= {} as any
+  Bookshop:BookShop[]=[]
+  shop:any
+  longitud!:boolean
 
+  jsonLibrari :any={
+
+    name: '',
+    location: '',
+    description: '',
+    img:''
+    
+  }
 
   json :any={
 
@@ -35,7 +48,19 @@ export class UpdateBookComponent implements OnInit {
     category:''
   }
 
-  constructor(private route: ActivatedRoute,private fb: FormBuilder, private router: Router, private servicio:BooksService, private servicioCat: CategoryService, private servicioUser:UserService) { }
+  jsonBook :any={
+
+    isbn:'',
+    title:'',
+    dateBook:'',
+    author:'',
+    price:'',
+    stock:'',
+    category:''
+  }
+
+  constructor(private route: ActivatedRoute,private fb: FormBuilder, private router: Router, private servicio:BooksService, private servicioCat: CategoryService, private servicioUser:UserService,
+    private bookshopSer: BookshopService) { }
 
   ngOnInit(): void {
 
@@ -55,6 +80,13 @@ export class UpdateBookComponent implements OnInit {
       },
     })
 
+    this.bookshopSer.getShop().subscribe({
+      next:(resp)=> {
+        this.Bookshop=resp;
+      },
+    })
+
+
   }
 
 
@@ -69,6 +101,11 @@ export class UpdateBookComponent implements OnInit {
     fotoPerfil:['',[Validators.required]],
     fileSource:['', [Validators.required]]
   });
+
+  bookshopForm : FormGroup= this.fb.group({
+    libreria:['',[Validators.required]]
+  })
+
 
 
   isValidField(field: string){
@@ -126,6 +163,85 @@ export class UpdateBookComponent implements OnInit {
 
   }
 
+  addBookshop(){
+
+    this.jsonBook.isbn=this.book.isbn
+    this.jsonBook.title = this.book.title
+    this.jsonBook.dateBook= this.book.dateBook
+    this.jsonBook.author=this.book.author
+    this.jsonBook.price=this.book.price
+    this.jsonBook.stock=this.book.stock
+    this.jsonBook.category= this.book.category
+    this.jsonBook.img=this.book.img
+    this.jsonBook.listAvaible=this.book.listAvaible
+
+    console.log(this.jsonBook);
+    
+    console.log(this.bookshopForm.get('libreria')?.value);
+
+    this.servicio.getBookShop(this.bookshopForm.get('libreria')?.value).subscribe({
+      next:(resp)=> {
+        this.shop=resp
+        this.jsonLibrari.name=this.shop.name
+        this.jsonLibrari.location=this.shop.location
+        this.jsonLibrari.description=this.shop.description
+        this.jsonLibrari.img=this.shop.img
+
+
+        console.log(this.jsonLibrari);
+        
+
+
+        this.servicio.putBookshop(this.jsonBook, this.jsonLibrari).subscribe({
+          next:(resp)=> {
+            if(resp){
+              window.location.reload()
+              this.myForm.reset()
+              Swal.fire({
+                icon: 'success',
+                title: 'Librerias Actualizadas con éxito',
+                text: '¡Librerias actualizadas!',
+            })
+            }
+          }
+          // },error:(err)=> {
+          //   Swal.fire({
+          //     icon: 'error',
+          //     title: 'Oops...',
+          //     text: 'Las librerias no se puede Actualizar.',
+          //   })
+    
+          // },
+        })
+    
+    
+      },
+    })
+ 
+  }
+
+  listlenght(){
+    if(this.book.listAvaible.size()==0){
+      this.longitud=true;
+    }
+  }
+
+
+  deleteBookshop(){
+    this.servicio.deleteBookshop(this.book.isbn, this.bookshopForm.get('libreria')?.value).subscribe({
+      next:(resp)=> {
+        if(resp){
+          window.location.reload()
+          this.myForm.reset()
+          Swal.fire({
+            icon: 'success',
+            title: 'Libreria borrada con éxito',
+            text: '¡Libreria borrada!',
+        })
+        }
+      },
+    })
+  }
 
   save(){
     if(this.myForm.valid){

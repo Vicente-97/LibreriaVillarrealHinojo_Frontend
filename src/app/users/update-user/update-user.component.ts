@@ -18,6 +18,8 @@ export class UpdateUserComponent {
   jwt = localStorage.getItem("jwt")
   username!:string
   userActual!:user
+
+
   json :any={
 
     username:'',
@@ -41,8 +43,8 @@ export class UpdateUserComponent {
     email:['', [Validators.required, Validators.email] ],
     password:['', [Validators.required, Validators.minLength(8)]],
     confirPassword:['', [Validators.required, Validators.minLength(8), this.match('password') ]],
-    fotoPerfil:['',[Validators.required]],
-    fileSource:['', [Validators.required]]
+    // fotoPerfil:['',[Validators.required]],
+    // fileSource:['', [Validators.required]]
   });
 
   //método para validar los campos del formulario.
@@ -100,26 +102,27 @@ export class UpdateUserComponent {
     this.json.email= this.myForm.get('email')?.value
     this.json.name=this.myForm.get('nombre')?.value
 
-    if(this.myForm.get('fileSource')==null){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'sorry, The photo cannot be empty!',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
-      this.router.navigate(['/'])
-    }
-    this.servicio.UpdateUser(this.json,this.myForm.get('fileSource')?.value,this.user.username)
+    // if(this.myForm.get('fileSource')==null){
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Oops...',
+    //     text: 'sorry, The photo cannot be empty!',
+    //     footer: '<a href="">Why do I have this issue?</a>'
+    //   })
+    //   this.router.navigate(['/'])
+    // }
+    this.servicio.UpdateUser(this.json,this.user.username)
     .subscribe({
       next:(resp)=> {
         if(resp){
-          window.location.reload()
-          this.myForm.reset()
+        
           Swal.fire({
             icon: 'success',
             title: 'User Updated',
             text: '¡User Update sucess!',
         });
+        // window.location.reload()
+        this.myForm.reset()
         }
       },error:(err)=> {
         Swal.fire({
@@ -128,7 +131,7 @@ export class UpdateUserComponent {
           text: 'sorry!',
           footer: '<a href="">Why do I have this issue?</a>'
         })
-        console.log(this.json,this.myForm.get('fileSource')?.value,this.user.username );
+        // console.log(this.json,this.myForm.get('fileSource')?.value,this.user.username );
         
       },
     })

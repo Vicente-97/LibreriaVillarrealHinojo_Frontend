@@ -21,10 +21,10 @@ export class UserService {
 
 //Método para poder updatear un usuario. necesitamos un json con los datos a modificar, el username para poder localizar
 //el usuario que vamos a updatear y la foto de perfil.
-  UpdateUser(json:any, fotoperfil:File, username:string):Observable<any>{
+  UpdateUser(json:any, username:string):Observable<any>{
     
     const datos: FormData = new FormData();
-    datos.append('file', fotoperfil, fotoperfil.name);
+    // datos.append('file', fotoperfil, fotoperfil.name);
     datos.append('user', new Blob([JSON.stringify(json)], {type: 'application/json'}))
     
     return this.http.put<any>(`${environment.apiUrl}/users/${username}`,datos)
@@ -53,6 +53,15 @@ export class UserService {
   //metodo para poder hacer a un usuario usuario user
   updateUserUser(username:string):Observable<any>{
     return this.http.put<any>(`${environment.apiUrl}/userRolUser/${username}`, { esAdmin: false })
+  }
+
+  //metodo para poder updatear a un usuario su foto de perfil:
+  updateUserProfilePic(username:string, file:File):Observable<any>{
+
+    const datos: FormData = new FormData();
+
+    datos.append('file', file, file.name)
+    return this.http.put<any>(`${environment.apiUrl}/userPicture/${username}`, datos)
   }
 
 

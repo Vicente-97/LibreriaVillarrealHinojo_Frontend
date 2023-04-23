@@ -5,6 +5,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { ListComponent } from './list/list.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { UpdatePhotoComponent } from './update-photo/update-photo.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
         { path: 'deleteUser/:id', canActivate:[RolGuardGuard], component: DeleteUserComponent  },
         { path: 'list',  canActivate:[RolGuardGuard],component: ListComponent },
         { path: 'updateUser/:id', component: UpdateUserComponent },
+        { path: 'updateUserPhoto/:id', component: UpdatePhotoComponent },
         { path: '**', redirectTo: 'user' }
       ]
     }

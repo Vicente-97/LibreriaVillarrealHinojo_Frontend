@@ -11,6 +11,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule } from 'primeng/paginator';
 import { RouterModule } from '@angular/router';
+import { UpdatePhotoComponent } from './update-photo/update-photo.component';
 
 
 
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     AdduserComponent,
     ListComponent,
     DeleteUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    UpdatePhotoComponent
   ],
   imports: [
     CommonModule,

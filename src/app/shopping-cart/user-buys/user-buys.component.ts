@@ -11,6 +11,7 @@ export class UserBuysComponent {
 
 Buys: any[]=[]
 username: any
+recommended :any[]=[]
 
 
 constructor( private shopping : ShoppingCartService, private route: Router) { }
@@ -29,7 +30,11 @@ ngOnInit(): void {
     },
   })
   
-  
+  this.shopping.getRecommended(this.username).subscribe({
+    next:(resp)=> {
+      this.recommended=resp
+    },
+  })
  
 }
 

@@ -114,5 +114,10 @@ export class ShoppingCartService {
   getBuys(username:string):Observable <any>{
     return this.http.get<any>(`${environment.apiUrl}/buy/${username}`)
   }
+
+
+  getRecommended(username:string):Observable <any>{
+    return this.http.get<any>(`${environment.apiUrl}/recomend/${username}`)
+  }
    
 }

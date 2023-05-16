@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
+<br>
+<br>
 <h2>Your Buys</h2>
 
 
@@ -6,6 +8,8 @@
 <button button type="button" class="btn btn-danger espaciado" href="#" [routerLink]="['/books/list']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
   <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
 </svg> &nbsp;Back</button>
+<br>
+<br>
 <div class="table-responsive">
 <table class="table">
     <thead>
@@ -31,20 +35,32 @@
   </table>
 </div>
 
-
-<h5> Recomendaciones</h5>
-
-<span>Basado en tus compras y en tus favoritos, hemos seleccionado los títulos más seguidos y comprados de Libreria Villarreal que no te puedes perder, quizás te podrían interesar algunos de estos títulos:
-
-</span>
 <br>
 <br>
-<div>
-  <span *ngFor="let item of recommended"><img [src]="item.img" alt="imgBook"width="120" height="120"> --{{item.title}} -- {{item.dateBook}} -- {{item.author}} -- {{item.category.name}} -- {{item.price}} -- {{item.stock}} </span>
-  
-  
+<h4 align="center"> Recomendaciones</h4>
+
+
+<span style="display: block; text-align: center;"><i>Basado en tus compras y en tus favoritos, hemos seleccionado los títulos más seguidos y comprados de Libreria Villarreal que no te puedes perder, quizás te podrían interesar algunos de estos títulos:
+
+  </i></span>
+<br>
+<br>
+
+<div class="card" style="width: 18rem; margin: 0 auto;" *ngFor="let item of recommended" align="center">
+  <img src="{{item.img}}" alt="Imagen" class="img-fluid rounded-start" >
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">title:</h5>
+          <p class="card-title">{{item.title}}</p>
+          <h5 class="card-text">category:</h5>
+          <p class="card-title">{{item.category.name}}</p>
+          <h5 class="card-title">Author:</h5>
+          <p class="card-title">{{item.author}}</p>
   </div>
-  
+</div>
+
+
+
   <br>
 
 

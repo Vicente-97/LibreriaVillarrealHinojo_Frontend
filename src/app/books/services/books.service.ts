@@ -73,5 +73,19 @@ export class BooksService {
   deleteBookshop(isbn:string, name:string):Observable<any>{
     return this.http.delete<any>(`${environment.apiUrl}/bookshop/${isbn}/${name}`)
   }
+  
+  addToFavoriteBook(json:any, name:string):Observable<any>{
+    const datos: FormData = new FormData();
+    datos.append('book', new Blob([JSON.stringify(json)], {type: 'application/json'}))
+    return this.http.post<any>(`${environment.apiUrl}/favorite/${name}`,datos)
+  }
 
+  deleteFavoriteBook(namebook:string, name:string):Observable<any>{  
+    return this.http.delete<any>(`${environment.apiUrl}/favorite/${namebook}/${name}`)
+  }
+
+  getFavoriteUser(id:string){
+    return this.http.get<any>(`${environment.apiUrl}/favorite/${id}`)
+  }
+ 
 }

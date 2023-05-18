@@ -44,6 +44,10 @@ const routes: Routes=[
     path: 'bookshop',
     loadChildren: () => import('./bookshop/bookshop.module').then( m => m.BookshopModule ),canActivate:[AuthGuardian]
   },
+  { 
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesModule ),canActivate:[AuthGuardian]
+  },
   
   {
     path: '**',

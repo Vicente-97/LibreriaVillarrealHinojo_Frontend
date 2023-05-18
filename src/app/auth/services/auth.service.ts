@@ -121,6 +121,8 @@ export class AuthService {
       }
     }
 
+    
+
 
     //Método de verificación.
     verify(username:string, code:string):Observable<boolean>{

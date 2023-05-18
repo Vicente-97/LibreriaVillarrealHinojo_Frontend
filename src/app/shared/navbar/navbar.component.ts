@@ -5,6 +5,7 @@ import { user } from '../../interfaces/userCompleto';
 import { CarritoItem } from '../../interfaces/carritoInterface';
 import { ShoppingCartService } from '../../shopping-cart/shopping-cart.service';
 import { ChatgptService } from '../../chat/chat.service';
+import { BooksService } from '../../books/services/books.service';
 
 
 @Component({
@@ -29,10 +30,10 @@ export class NavbarComponent implements OnInit {
 
   Buys:any[]=[]
 
-
+  Favorites:any[]=[]
   
   
-  constructor(private servicio: AuthService, private servicioUser: UserService, private serviceShop:ShoppingCartService) { }
+  constructor(private servicio: AuthService, private servicioUser: UserService, private serviceShop:ShoppingCartService, private bookService: BooksService) { }
 
   //variable de creacion del carrito.
   carrito: CarritoItem[]=[]
@@ -64,6 +65,17 @@ export class NavbarComponent implements OnInit {
         },
       })
 
+
+    }
+
+    if(this.username){
+      this.bookService.getFavoriteUser(this.username).subscribe({
+        next:(resp)=> {
+          this.Favorites=resp
+        },
+      })
+
+      
     }
   }
 

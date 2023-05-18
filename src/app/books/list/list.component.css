@@ -11,6 +11,10 @@ table {
   .botonAmarillo{
     background-color: rgb(34, 22, 197);
   }
+
+  .botonAddFav{
+    background-color: rgb(78, 175, 39);
+  }
   
   th, td {
     border: 1px solid #dddddd;

@@ -7,6 +7,8 @@ import { AuthService } from '../../auth/services/auth.service';
 import { NgFor } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { BookShop } from 'src/app/interfaces/bookshopInterface';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,8 +38,10 @@ export class ListComponent implements OnInit {
   isbn :string |null = null;
   //variable para poder realizar el filtrado.
   filtroNombre!: string;
- 
-  constructor(private bookServ : BooksService, private shopping : ShoppingCartService, private servicio: AuthService) { }
+  username: any
+  addedFav=false;
+
+  constructor(private bookServ : BooksService, private shopping : ShoppingCartService, private servicio: AuthService, private route : Router) { }
 
   
 
@@ -100,6 +104,42 @@ export class ListComponent implements OnInit {
 
     onActivate(event:any) {
       console.log(event);
+    }
+
+    addToFavorite(book:Books){
+      this.username= localStorage.getItem("username")
+      this.bookServ.addToFavoriteBook(book, this.username).subscribe({
+        next:(resp) =>{
+          
+            this.addedFav=true;
+              Swal.fire({
+                icon: 'success',
+                title: 'Favorite add',
+                text: '¡Favorite added!',
+            });
+            this.route.navigate(['/books/list'])
+            window.location.reload()
+        
+        },
+      })
+    }
+
+    deleteFavorite(namebook:string){
+      this.username= localStorage.getItem("username")
+      this.bookServ.deleteFavoriteBook(namebook, this.username).subscribe({
+        next:(resp) =>{
+          Swal.fire({
+            icon: 'success',
+            title: 'Favorite deleted',
+            text: '¡Favorite deleted!',
+        });
+        this.route.navigate(['/books/list'])
+        window.location.reload()
+    
+        },
+      })
+
+
     }
 
      }

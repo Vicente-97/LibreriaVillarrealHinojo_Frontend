@@ -87,5 +87,9 @@ export class BooksService {
   getFavoriteUser(id:string){
     return this.http.get<any>(`${environment.apiUrl}/favorite/${id}`)
   }
+
+  getFavoriteConcreto(namebook:string, username:string){
+    return this.http.get<any>(`${environment.apiUrl}/favorite/${namebook}/${username}`)
+  }
  
 }

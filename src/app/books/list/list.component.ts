@@ -38,9 +38,12 @@ export class ListComponent implements OnInit {
   isbn :string |null = null;
   //variable para poder realizar el filtrado.
   filtroNombre!: string;
-  username: any
+  username=localStorage.getItem("username")
   addedFav=false;
+  librosFavoritos:Books[]=[]
 
+  
+  
   constructor(private bookServ : BooksService, private shopping : ShoppingCartService, private servicio: AuthService, private route : Router) { }
 
   
@@ -66,11 +69,31 @@ export class ListComponent implements OnInit {
    this.getBooks()
    this.jwt = localStorage.getItem('jwt');
   
+   
    if(this.jwt){
      this.isAdmin = this.servicio.isUserAdmin(this.jwt);
    }
 
 
+
+  }
+
+  añadido(username:string){
+    if(this.username!=null){
+      this.bookServ.getFavoriteUser(this.username).subscribe({
+        next:(resp)=> {
+          this.librosFavoritos=resp
+          this.librosFavoritos.forEach(book => {
+            this.books.forEach(book => {
+              if(book==book){
+                this.addedFav=true
+              }
+
+            });
+          });
+        },
+      })
+    }
 
   }
 
@@ -108,36 +131,66 @@ export class ListComponent implements OnInit {
 
     addToFavorite(book:Books){
       this.username= localStorage.getItem("username")
-      this.bookServ.addToFavoriteBook(book, this.username).subscribe({
-        next:(resp) =>{
-          
+      if(this.username!=null){
+        this.bookServ.addToFavoriteBook(book, this.username).subscribe({
+          next:(resp) =>{
             this.addedFav=true;
-              Swal.fire({
-                icon: 'success',
-                title: 'Favorite add',
-                text: '¡Favorite added!',
-            });
-            this.route.navigate(['/books/list'])
-            window.location.reload()
-        
-        },
-      })
+             
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Favorite add',
+                  text: '¡Favorite added!',
+              });
+              this.route.navigate(['/favorites/list'])
+             
+          
+          }, error:(err)=> {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Favorito ya esta añadido!',
+            })
+            this.route.navigate(['/favorites/list'])
+          },
+        })
+  
+      }
+     
+
     }
+
+
+    
 
     deleteFavorite(namebook:string){
       this.username= localStorage.getItem("username")
-      this.bookServ.deleteFavoriteBook(namebook, this.username).subscribe({
-        next:(resp) =>{
-          Swal.fire({
-            icon: 'success',
-            title: 'Favorite deleted',
-            text: '¡Favorite deleted!',
-        });
-        this.route.navigate(['/books/list'])
-        window.location.reload()
-    
-        },
-      })
+      if(this.username!=null){
+
+        this.bookServ.deleteFavoriteBook(namebook, this.username).subscribe({
+          next:(resp) =>{
+            Swal.fire({
+              icon: 'success',
+              title: 'Favorite deleted',
+              text: '¡Favorite deleted!',
+          });
+          this.route.navigate(['/favorites/list'])
+          
+      
+          },error:(err)=> {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Favorito ya esta eliminado!',
+            })
+            this.route.navigate(['/favorites/list'])
+          },
+        })
+  
+      
+        
+
+      }
+      
 
 
     }

@@ -13,4 +13,5 @@ export interface Books{
     category:Categories
     img:String
     BookShop: any[]
+    ListFav: any[]
 }

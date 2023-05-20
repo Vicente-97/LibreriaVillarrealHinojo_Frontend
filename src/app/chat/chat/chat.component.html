@@ -25,6 +25,7 @@
     <div class="card-body espaciado">
         <h6>Answers</h6>
       <ul class="list-group">
+      <span >{{respuesta}}</span>
         <li class="list-group-item col-12 respuesta"></li>
         
       </ul>
@@ -35,6 +36,7 @@
           <input [(ngModel)]="message" type="text" class="form-control" placeholder="Escribe tu mensaje..." name="message">
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit" (click)="sendMessage()">Enviar</button>
+             
             <button class="btn btn-danger" type="submit" (click)=" limpiar()">Borrar</button>
           </div>
         </div>

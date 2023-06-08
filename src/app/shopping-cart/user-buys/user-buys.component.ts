@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserBuysComponent {
 
+  // Atributos para poder conocer las compras de un user
 Buys: any[]=[]
 username: any
 recommended :any[]=[]
@@ -29,7 +30,7 @@ ngOnInit(): void {
       console.log(this.Buys);
     },
   })
-  
+  // Obtiene las recomendaciones para un user en concreto.
   this.shopping.getRecommended(this.username).subscribe({
     next:(resp)=> {
       this.recommended=resp
@@ -38,6 +39,7 @@ ngOnInit(): void {
  
 }
 
+// Método para obtener compras de un user.
 obtenerCompras(username :string){
 
   username=this.username

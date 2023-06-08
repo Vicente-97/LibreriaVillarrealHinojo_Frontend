@@ -8,12 +8,13 @@ import { ChatgptService } from '../chat.service';
 })
 export class ChatComponent {
 
+  // Atributos que necesitaremos para el chat.
   message!:string
   respuesta! :any
   constructor(private seviceChat: ChatgptService) { }
 
 
-
+// Método que manda el mensaje y obtiene la respuesta a través del backend.
   sendMessage(){
 
     // this.seviceChat.getDataFromOpenAI(this.message);
@@ -24,13 +25,14 @@ export class ChatComponent {
         console.log(resp);
         
       },error:(err)=> {
-        alert("error en la peticion al chatgpt")
+        alert("error en la peticion al chat live.")
       },
     })
     this.message = '';
 
   }
 
+  // Limpia el mensaje.
   limpiar(){
     location.reload();
 

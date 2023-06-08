@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class UpdateBookShopComponent {
   @ViewChild('updateShop') updateShop!: NgForm
 
+  // Atributos o propiedades que nos haran falta
   name:string=''
   location:string=''
   description:string =''
@@ -44,7 +45,7 @@ export class UpdateBookShopComponent {
     && this.updateShop?.controls[campo]?.touched;
   }
 
-
+// Método para actualizar una libreria física.
   updateBookShop(){
       this.servicio.updateBookShop(this.name, this.location, this.description).subscribe({
         next:(resp)=> {

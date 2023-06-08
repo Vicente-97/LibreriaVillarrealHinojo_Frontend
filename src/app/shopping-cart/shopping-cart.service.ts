@@ -115,7 +115,7 @@ export class ShoppingCartService {
     return this.http.get<any>(`${environment.apiUrl}/buy/${username}`)
   }
 
-
+// Obtiene las recomendaciones para un usuario en concreto.
   getRecommended(username:string):Observable <any>{
     return this.http.get<any>(`${environment.apiUrl}/recomend/${username}`)
   }

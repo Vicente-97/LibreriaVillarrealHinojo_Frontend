@@ -62,13 +62,7 @@ export class ChatgptService {
 
   // }
 
-  getMessageChat(message:string){
-    return this.http.get<any>(`${environment.apiUrl}/chatboot/chat?message=${message} `, { responseType: 'json' })
-    }
-  }
-
-  
-  // .pipe(
+   // .pipe(
         
   //   filter(resp=>!!resp && !!resp.data),
   //   map(resp=>resp.data),
@@ -104,4 +98,17 @@ export class ChatgptService {
   //     alert("error en la peticion al chatgpt")
   //   },
   // })
+
+
+
+  
+  // Método para poder acceder a la respuesta del mensaje.
+  // En versiones anteriores, todo esto se hacía en el Frontend, por eso estan comentadas esas líneas de código, En la nueva version se accede mediante el backend por problemas en la API KEY que se volvía publica en el despliegue.
+  getMessageChat(message:string){
+    return this.http.get<any>(`${environment.apiUrl}/chatboot/chat?message=${message} `, { responseType: 'json' })
+    }
+  }
+
+  
+ 
 

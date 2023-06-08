@@ -54,10 +54,12 @@ export class BooksService {
     return this.http.delete<any>(`${environment.apiUrl}/books/${id}`)
   }
 
+  // Obtiene las librerias físicas de un libro.
   getLibraryofBook(id:string):Observable<BookShop[]>{
     return this.http.get<BookShop[]>(`${environment.apiUrl}/avaible/${id}`)
   }
 
+  // 
   putBookshop(jsonBook:any, jsonBookShop:any):Observable<any>{
     const datos: FormData = new FormData();
     datos.append('isbn', new Blob([JSON.stringify(jsonBook)], {type: 'application/json'}))
@@ -66,28 +68,31 @@ export class BooksService {
     return this.http.put<any>(`${environment.apiUrl}/bookshop/`,datos)
   }
   
+  // Obtiene las libreria  en la que se encuentran disponibles.
   getBookShop(id:string){
     return this.http.get<any>(`${environment.apiUrl}/bookshop/${id}`)
   }
-
+// Borra de la lista de librerias disponibles ese libro.
   deleteBookshop(isbn:string, name:string):Observable<any>{
     return this.http.delete<any>(`${environment.apiUrl}/bookshop/${isbn}/${name}`)
   }
-  
+  // Añade un libro a tus libros favoritos.
   addToFavoriteBook(json:any, name:string):Observable<any>{
     const datos: FormData = new FormData();
     datos.append('book', new Blob([JSON.stringify(json)], {type: 'application/json'}))
     return this.http.post<any>(`${environment.apiUrl}/favorite/${name}`,datos)
   }
 
+  // Borra un libro de tus libros favoritos.
   deleteFavoriteBook(namebook:string, name:string):Observable<any>{  
     return this.http.delete<any>(`${environment.apiUrl}/favorite/${namebook}/${name}`)
   }
 
+  // Obtiene los favoritos de un user.
   getFavoriteUser(id:string){
     return this.http.get<any>(`${environment.apiUrl}/favorite/${id}`)
   }
-
+// Obtiene un favorito concreto de un user.
   getFavoriteConcreto(namebook:string, username:string){
     return this.http.get<any>(`${environment.apiUrl}/favorite/${namebook}/${username}`)
   }

@@ -16,12 +16,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router, private servicio : AuthService) { }
 
+
+
   //definimos nuestro formulario Reactive.
   myForm: FormGroup= this.fb.group({
     nombre:['', [Validators.required, Validators.minLength(3)]],
     email:['', [Validators.required, Validators.email] ],
     password:['', [Validators.required, Validators.minLength(8)]],
     confirPassword:['', [Validators.required, Validators.minLength(8), this.match('password') ]]
+    
   });
 
   //Método que completa el registro.
@@ -88,4 +91,5 @@ export class RegisterComponent implements OnInit {
       
     }
   }
+
 }

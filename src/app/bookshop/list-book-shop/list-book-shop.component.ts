@@ -11,6 +11,8 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class ListBookShopComponent {
 
+  // Atributos o propiedades declaradas que nos haran falta, una lista de librerías físicas, variable de
+  // si es admin o no para poder acceder, y variable para decodificar el token.
   public bookShop :BookShop[]=[]
   isAdmin=false;
   jwt: string | null = null;
@@ -20,6 +22,7 @@ export class ListBookShopComponent {
   ngOnInit(): void {
     this.getBookShoping()
     console.log(this.bookShop);
+    // recupera el token y comprueba si es admin o no.
     this.jwt = localStorage.getItem("jwt")
     if(this.jwt !=null){
       this.isAdmin=this.authSer.isUserAdmin(this.jwt)
@@ -28,6 +31,7 @@ export class ListBookShopComponent {
     
   }
 
+  // método para obtener las librerias físicas.
   getBookShoping(){
     this.servicio.getShop().subscribe({
       

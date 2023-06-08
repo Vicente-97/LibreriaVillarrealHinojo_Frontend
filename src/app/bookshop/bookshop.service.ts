@@ -24,11 +24,13 @@ export class BookshopService {
     return this.http.post<any>(environment.apiUrl+'/bookshop',{'name':name, 'location':location, 'description': description},{'headers':headers})
   }
 
+  // método para borrar una libreria física.
   deleteBookShop(name:string):Observable<any>{
     const headers = { 'content-type': 'application/json'}   
     return this.http.delete<any>(`${environment.apiUrl}/bookshopping/${name}`)
   }
 
+  // método para actualizar una libreria física.
   updateBookShop(name:string, location:string, description:string):Observable<any>{
     const headers = { 'content-type': 'application/json'}   
     return this.http.put<any>(`${environment.apiUrl}/bookshopping/${name}`,{'name':name, 'location':location, 'description': description},{'headers':headers})

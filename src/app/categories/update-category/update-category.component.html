@@ -18,13 +18,14 @@
               <span class="form-text text-danger" *ngIf="nombreValido('description')" >
                 Description must be longer than 3 letters
               </span>
-
+              
+              
           
 
 
         </div>
        
-         <button type="submit" class="btn btn-primary espacioButton">Edit Category</button>
+         <button type="submit" class="btn btn-primary espacioButton" [disabled]="updateCategory.invalid">Edit Category</button>
          <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/category/list']" routerLinkActive="active" >Back</button>
       </form>
     </div>

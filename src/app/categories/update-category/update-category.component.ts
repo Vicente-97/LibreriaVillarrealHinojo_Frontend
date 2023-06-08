@@ -56,7 +56,15 @@ export class UpdateCategoryComponent implements OnInit {
           text: 'Something has gone wrong!',
           footer: '<a href="">Why do I have this issue?</a>'
         })
-      }}}})
+      }}else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something has gone wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })}}
+    
+    })
   }
 
 }

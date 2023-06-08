@@ -130,7 +130,7 @@ export class UpdateBookComponent implements OnInit {
 
           next:(resp)=> {
             if(resp){
-              window.location.reload()
+              
               this.myForm.reset()
               Swal.fire({
                 icon: 'success',
@@ -138,6 +138,7 @@ export class UpdateBookComponent implements OnInit {
                 text: '¡Libro Actualizado!',
             })
             }
+            this.router.navigate(['/books/list'])
           },error:(err)=> {
             Swal.fire({
               icon: 'error',
@@ -146,7 +147,7 @@ export class UpdateBookComponent implements OnInit {
             })
             
           },
-    
+          
     
         })
       },error:(err)=> {
@@ -162,7 +163,7 @@ export class UpdateBookComponent implements OnInit {
   
 
   }
-
+// método para poder añadir una de las librerias fisicas disponibles donde poder comprar ese libro.
   addBookshop(){
 
     this.jsonBook.isbn=this.book.isbn
@@ -195,15 +196,17 @@ export class UpdateBookComponent implements OnInit {
         this.servicio.putBookshop(this.jsonBook, this.jsonLibrari).subscribe({
           next:(resp)=> {
             if(resp){
-              window.location.reload()
+              
               this.myForm.reset()
               Swal.fire({
                 icon: 'success',
                 title: 'Librerias Actualizadas con éxito',
                 text: '¡Librerias actualizadas!',
             })
+            this.router.navigate(['/books/list'])
             }
           }
+          
           // },error:(err)=> {
           //   Swal.fire({
           //     icon: 'error',
@@ -226,12 +229,12 @@ export class UpdateBookComponent implements OnInit {
     }
   }
 
-
+// método para poder borrar una de las librerias fisicas disponibles donde poder comprar ese libro.
   deleteBookshop(){
     this.servicio.deleteBookshop(this.book.isbn, this.bookshopForm.get('libreria')?.value).subscribe({
       next:(resp)=> {
         if(resp){
-          window.location.reload()
+          
           this.myForm.reset()
           Swal.fire({
             icon: 'success',
@@ -239,6 +242,7 @@ export class UpdateBookComponent implements OnInit {
             text: '¡Libreria borrada!',
         })
         }
+        this.router.navigate(['/books/list'])
       },
     })
   }

@@ -104,14 +104,14 @@ export class AddBookComponent implements OnInit {
         
           next:(resp)=> {
             if(resp){
-              window.location.reload()
+              
               this.myForm.reset()
               Swal.fire({
                 icon: 'success',
                 title: 'Book successfully added',
                 text: '¡Book added!',
             })
-            this.router.navigate(['/'])
+            this.router.navigate(['/books/list'])
             }
           },error:(err)=> {
             Swal.fire({

@@ -13,6 +13,7 @@ export class AddBookShopComponent {
 
   @ViewChild('addBookShop') addCategoryForm!: NgForm
 
+  // Propiedades de la Libreria Física.
   name:string=''
   location:string=''
   description:string =''
@@ -32,7 +33,7 @@ export class AddBookShopComponent {
 
 
 
-
+// Método para añadir una libreria física.
   addBookShopping(){
 
     this.servicio.addBookshop(this.name, this.location, this.description).subscribe({
@@ -55,6 +56,13 @@ export class AddBookShopComponent {
           footer: '<a href="">Why do I have this issue?</a>'
         })
       }}
+      },error:(err)=> {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something has gone wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
       },
     })
   }

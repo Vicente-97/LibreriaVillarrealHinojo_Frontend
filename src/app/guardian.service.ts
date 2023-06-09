@@ -37,7 +37,11 @@ export class AuthGuardian implements CanActivate, CanActivateChild{
         if (this.servicio.isAuthenticated()){
           return true;
         } else {
+        
+          
           this.router.navigate(['/']);
+          
+
         }
         return false;
         

@@ -9,6 +9,8 @@ import { BooksService } from '../../books/services/books.service';
 })
 export class ListFavComponent {
 
+  // Atributos o propiedades que nos serviran de ayuda. Username para recuperar el usurname del usuario logueado.
+  // Array de favoritos para poder listarlos.
   username:string|null=localStorage.getItem("username")
   Favorites:any[]=[]
 

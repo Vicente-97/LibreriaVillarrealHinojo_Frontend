@@ -77,7 +77,7 @@ export class UpdatePhotoComponent {
     }
   }
 
-
+// metodo para cambiar  la foto perfil.
   saveUpdate(){
  if(this.myForm.get('fileSource')==null){
        Swal.fire({

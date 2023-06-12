@@ -19,19 +19,21 @@
 <br>
 <br>
 
-<div class="d-flex justify-content-center">
-<div class="card" style="width: 12rem; margin: 10px;" *ngFor="let item of Favorites" align="center">
-<img src="{{item.book.img}}" alt="Imagen" class="img-fluid rounded-start" >
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <h5 class="card-title">title:</h5>
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of Favorites" align="center">
+    <div class="card" style="margin-bottom: 10px;">
+      <img src="{{item.book.img}}" alt="Imagen" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">title:</h5>
         <p class="card-title">{{item.book.title}}</p>
         <h5 class="card-text">category:</h5>
         <p class="card-title">{{item.book.category.name}}</p>
         <h5 class="card-title">Author:</h5>
         <p class="card-title">{{item.book.author}}</p>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

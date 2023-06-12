@@ -51,7 +51,15 @@ export class ListComponent implements OnInit {
   //Método del carrito para poder añadir al carrito un libro.
   addToCart(book:Books){
     this.shopping.agregarAlCarrito(book)
+
     window.sessionStorage.setItem('carrito', JSON.stringify(this.shopping.books));
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Artículo añadido',
+      text: 'Artículo añadido',
+  });
+    
   }
   
   
@@ -87,6 +95,7 @@ export class ListComponent implements OnInit {
             this.books.forEach(book => {
               if(book==book){
                 this.addedFav=true
+
               }
 
             });

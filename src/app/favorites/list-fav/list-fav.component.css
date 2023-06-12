@@ -4,4 +4,21 @@
     align-items: center;
     
   }
+
+  .card {
+    width: 12rem;
+    margin: 10px;
+  }
+  
+  @media (max-width: 767px) {
+    .card {
+      width: 100%;
+    }
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
   

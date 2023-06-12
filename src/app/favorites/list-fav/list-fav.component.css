@@ -9,6 +9,10 @@
     margin: 0.5em;
     
     }
+
+    .row.justify-content-center {
+      align-items: center;
+    }
   /* .card {
     width: 12rem;
     margin: 10px;

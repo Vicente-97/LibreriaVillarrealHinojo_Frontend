@@ -26,7 +26,7 @@ const routes: Routes=[
   },
   { 
     path: 'category',
-    loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesModule ),canActivate:[AuthGuardian]
+    loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesModule )
   },
   { 
     path: 'login',

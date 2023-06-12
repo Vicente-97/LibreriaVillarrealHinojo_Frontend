@@ -46,6 +46,12 @@ export class ListByCatComponent {
   addToCart(book:Books){
     this.shopping.agregarAlCarrito(book)
     window.sessionStorage.setItem('carrito', JSON.stringify(this.shopping.books));
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Artículo añadido',
+      text: 'Artículo añadido',
+  });
   }
 
   addToFavorite(book:Books){

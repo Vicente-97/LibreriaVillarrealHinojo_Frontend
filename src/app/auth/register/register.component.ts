@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     const username:string =this.myForm.get('nombre')?.value
     const password:string = this.myForm.get('password')?.value
     const email:string =this.myForm.get('email')?.value
-    console.log(username,email,password)
+    // console.log(username,email,password)
     this.servicio.register(username,email,password
     ).subscribe({
         next: (resp) => {

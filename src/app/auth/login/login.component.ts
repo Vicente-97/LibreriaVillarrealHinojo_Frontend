@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   //Método para iniciar sesion.
   signIn():void{
-    console.log('Username: ', this.loginForm.value.username, 'Password: ', this.loginForm.value.password)
+    // console.log('Username: ', this.loginForm.value.username, 'Password: ', this.loginForm.value.password)
     this.loginService.login(this.loginForm.value.username, this.loginForm.value.password)
     .subscribe({
       next: (resp) => {

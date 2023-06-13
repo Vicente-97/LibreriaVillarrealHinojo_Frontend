@@ -34,14 +34,14 @@
     
         <tr>
           <th pSortableColumn="isbn" class="text-center">Isbn<p-sortIcon field="isbn"></p-sortIcon></th>
-          <th>Imagen</th>
+          <th class="text-center">Imagen</th>
           <th pSortableColumn="title" class="text-center">Title<p-sortIcon field="title"></p-sortIcon></th>
-          <th>dateBook</th>
+          <th class="text-center">dateBook</th>
           <th pSortableColumn="author" class="text-center">Author<p-sortIcon field="author"></p-sortIcon></th>
-          <th>Category</th>
+          <th class="text-center">Category</th>
           <th pSortableColumn="price" class="text-center">Price<p-sortIcon field="price"></p-sortIcon></th>
-          <th>stock</th>
-          <th>Bookshop Avaible</th>
+          <th class="text-center">stock</th>
+          <th class="text-center">Bookshop Avaible</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-book>
@@ -55,29 +55,29 @@
           <td class="text-center">{{book.price}}</td>
           <td class="text-center">{{book.stock}}</td>
           <!-- <td >{{book.listAvaible.name}}</td> -->
-          <td><span *ngFor="let shop of book.listAvaible">{{shop.name.name}}  <br> <hr></span></td> 
+          <td class="text-center"><span *ngFor="let shop of book.listAvaible">{{shop.name.name}}  <br> <hr></span></td> 
           <!--<td ><span *ngFor="let item of book.listFav" >{{item.user.username}}</span></td>-->
           <!-- <td *ngFor="let shop of Bookshop"><span *ngIf="shop!=null">{{shop.name}}</span><td> -->
             <td>
-            <button *ngIf="isAdmin" pButton icon="pi pi-pencil"  aria-label="boton" aria-labelledby="boton" title="boton"class="btn btn-primary" href="#" [routerLink]="['/books/updateBook/',book.isbn]" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <button *ngIf="isAdmin" pButton icon="pi pi-pencil"  aria-label="boton" aria-labelledby="boton" title="boton"class="btn btn-primary text-center" href="#" [routerLink]="['/books/updateBook/',book.isbn]" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
               <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
             </svg> &nbsp;Edit &nbsp;</button>
             &nbsp;
-            <button *ngIf="isAdmin"  pButton   class="btn btn-danger botonRojo" href="#" [routerLink]="['/books/deleteBook/',book.isbn]"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+            <button *ngIf="isAdmin"  pButton   class="btn btn-danger botonRojo text-center" href="#" [routerLink]="['/books/deleteBook/',book.isbn]"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
               <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
             </svg> &nbsp; Delete &nbsp;</button>
             &nbsp;
-            <button *ngIf="book.stock!='0'&&isAdmin==false&&jwt!=null " pButton   class="btn btn-danger botonAmarillo text-white " href="#" (click)="addToCart(book)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+            <button *ngIf="book.stock!='0'&&isAdmin==false&&jwt!=null " pButton   class="btn btn-danger botonAmarillo text-white  text-center" href="#" (click)="addToCart(book)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
               <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/>
             </svg> &nbsp; Add to Cart&nbsp;</button>
             
-            <button *ngIf="book.stock!='0'&&isAdmin==false&&jwt!=null" pButton   class="btn btn-danger botonAddFav text-white " href="#" (click)="addToFavorite(book)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-through-heart-fill" viewBox="0 0 16 16">
+            <button *ngIf="book.stock!='0'&&isAdmin==false&&jwt!=null" pButton   class="btn btn-danger botonAddFav text-white  text-center" href="#" (click)="addToFavorite(book)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-through-heart-fill" viewBox="0 0 16 16">
               <path d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z"/>
             </svg> &nbsp; Add to favorite &nbsp;</button>
           
  <!-- Falta lo de aque desaparezcan los botones -->
 
-            <button *ngIf="book.stock!='0'&&isAdmin==false&&jwt!=null" pButton   class="btn btn-danger botonRojo text-white " href="#" (click)="deleteFavorite(book.isbn)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+            <button *ngIf="book.stock!='0'&&isAdmin==false&&jwt!=null" pButton   class="btn btn-danger botonRojo text-white text-center" href="#" (click)="deleteFavorite(book.isbn)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
               <path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"/>
             </svg> &nbsp; delete Favorite &nbsp;</button>
 

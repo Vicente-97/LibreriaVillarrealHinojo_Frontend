@@ -40,7 +40,7 @@ export class UpdateCategoryComponent implements OnInit {
     this.servicio.updateCategory(name, description).subscribe({
       next: (resp)=> {
         if (resp) {
-          console.log(resp)
+          // console.log(resp)
           if(this.updateCategoryForm.valid){
           
             Swal.fire({

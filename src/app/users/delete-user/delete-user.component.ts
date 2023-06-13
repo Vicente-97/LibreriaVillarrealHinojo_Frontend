@@ -30,7 +30,7 @@ export class DeleteUserComponent {
 //recuperamos el usuario por parámetros y lo obtenemos, linkeamos las propiedades para mostrarlos
   ngOnInit(): void {
     this.username= this.route.snapshot.params['id']
-    console.log(this.username);
+    // console.log(this.username);
     this.servicio.getUser(this.username).subscribe({
       next:(resp)=> {
         this.username=resp.username
@@ -48,7 +48,7 @@ export class DeleteUserComponent {
 
       next: (resp)=> {
         if (resp) {
-          console.log(resp)
+          // console.log(resp)
           if(this.deleteUserForm.valid){
           
             Swal.fire({

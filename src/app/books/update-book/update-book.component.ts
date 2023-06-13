@@ -176,9 +176,9 @@ export class UpdateBookComponent implements OnInit {
     this.jsonBook.img=this.book.img
     this.jsonBook.listAvaible=this.book.listAvaible
 
-    console.log(this.jsonBook);
+    // console.log(this.jsonBook);
     
-    console.log(this.bookshopForm.get('libreria')?.value);
+    // console.log(this.bookshopForm.get('libreria')?.value);
 
     this.servicio.getBookShop(this.bookshopForm.get('libreria')?.value).subscribe({
       next:(resp)=> {
@@ -189,7 +189,7 @@ export class UpdateBookComponent implements OnInit {
         this.jsonLibrari.img=this.shop.img
 
 
-        console.log(this.jsonLibrari);
+        // console.log(this.jsonLibrari);
         
 
 
@@ -200,8 +200,8 @@ export class UpdateBookComponent implements OnInit {
               this.myForm.reset()
               Swal.fire({
                 icon: 'success',
-                title: 'Librerias Actualizadas con éxito',
-                text: '¡Librerias actualizadas!',
+                title: 'Successfully updated library',
+                text: '¡Successfully updated library!',
             })
             this.router.navigate(['/books/list'])
             }
@@ -238,8 +238,8 @@ export class UpdateBookComponent implements OnInit {
           this.myForm.reset()
           Swal.fire({
             icon: 'success',
-            title: 'Libreria borrada con éxito',
-            text: '¡Libreria borrada!',
+            title: 'Successfully deleted library',
+            text: '¡Successfully deleted library!',
         })
         }
         this.router.navigate(['/books/list'])

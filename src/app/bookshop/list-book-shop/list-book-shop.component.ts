@@ -21,7 +21,7 @@ export class ListBookShopComponent {
 
   ngOnInit(): void {
     this.getBookShoping()
-    console.log(this.bookShop);
+    // console.log(this.bookShop);
     // recupera el token y comprueba si es admin o no.
     this.jwt = localStorage.getItem("jwt")
     if(this.jwt !=null){

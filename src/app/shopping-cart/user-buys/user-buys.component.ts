@@ -20,14 +20,14 @@ constructor( private shopping : ShoppingCartService, private route: Router) { }
 
 ngOnInit(): void {
   this.username= localStorage.getItem("username")
-  console.log(this.username);
+  // console.log(this.username);
   
   this.shopping.getBuys(this.username).subscribe({
     next:(resp)=> {
       this.Buys=resp
       
       
-      console.log(this.Buys);
+      // console.log(this.Buys);
     },
   })
   // Obtiene las recomendaciones para un user en concreto.

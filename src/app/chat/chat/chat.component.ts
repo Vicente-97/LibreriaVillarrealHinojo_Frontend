@@ -22,7 +22,7 @@ export class ChatComponent {
       next:(resp:any)=> {
        
         this.respuesta=resp.message;
-        console.log(resp);
+        // console.log(resp);
         
       },error:(err)=> {
         alert("error en la peticion al chat live.")

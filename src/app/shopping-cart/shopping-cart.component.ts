@@ -84,9 +84,9 @@ export class ShoppingCartComponent {
         this.json.cantidad= item.cantidad
         let cantidad= item.cantidad
         let username= localStorage.getItem("username") 
-        console.log(cantidad);
-        console.log(username);
-        console.log(this.json);
+        // console.log(cantidad);
+        // console.log(username);
+        // console.log(this.json);
         
         
         

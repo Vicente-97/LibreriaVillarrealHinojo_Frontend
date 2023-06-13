@@ -56,8 +56,8 @@ export class ListComponent implements OnInit {
 
     Swal.fire({
       icon: 'success',
-      title: 'Artículo añadido',
-      text: 'Artículo añadido',
+      title: 'Article added successfully',
+      text: 'Article added successfully',
   });
     
   }

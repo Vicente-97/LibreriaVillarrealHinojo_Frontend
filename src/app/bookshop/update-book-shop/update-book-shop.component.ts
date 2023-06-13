@@ -24,9 +24,9 @@ export class UpdateBookShopComponent {
 
   ngOnInit(): void {
     this.name= this.route.snapshot.params['id']
-    console.log(this.route.snapshot.params['id']);
+    // console.log(this.route.snapshot.params['id']);
     
-    console.log(this.name);
+    // console.log(this.name);
     this.bookSer.getBookShop(this.name).subscribe({
       next:(resp)=> {
         this.location=resp.location;

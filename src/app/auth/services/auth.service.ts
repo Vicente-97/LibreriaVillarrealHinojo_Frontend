@@ -88,7 +88,7 @@ export class AuthService {
 
     //Logica para poder registrar al usuario.
     register(username:string,email:string,password:string):Observable<boolean>{
-      console.log(username,password)
+      // console.log(username,password)
       
       return this.http.post<any>(environment.apiUrl+"/register",{'username':username,'email':email,'password':password}, this.httpOptions)
       .pipe(switchMap(resp=>{

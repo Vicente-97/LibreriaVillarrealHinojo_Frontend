@@ -23,7 +23,7 @@ export class DeleteCategoryComponent implements OnInit {
   //recuperamos los parámetros y mostramos nuestra categoria que vamos a borrar.
   ngOnInit(): void {
     this.name= this.route.snapshot.params['id']
-    console.log(this.name);
+    // console.log(this.name);
     this.servicio.getCategoryId(this.name).subscribe({
       next:(resp)=> {
         this.description=resp.description
@@ -44,7 +44,7 @@ deleteCategories(){
     this.servicio.deleteCategory(name).subscribe({
       next: (resp)=> {
         if (resp) {
-          console.log(resp)
+          // console.log(resp)
           if(this.deleteCategoryForm.valid){
           
             Swal.fire({

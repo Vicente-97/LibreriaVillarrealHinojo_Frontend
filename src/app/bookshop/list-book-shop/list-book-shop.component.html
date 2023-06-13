@@ -1,5 +1,63 @@
 <app-navbar></app-navbar>
 
+<div class="row" *ngIf="bookShop.length != 0">
+  <div class="col-12 col-md-6 espacio">
+
+      <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/']" routerLinkActive="active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg>Back
+      </button>
+
+  </div>
+
+  <div class="col-12 col-md-6 espacio" *ngIf="isAdmin">
+
+    <button button type="button" class="btn btn-primary" href="#" [routerLink]="['/bookshop/addBookShop']" routerLinkActive="active">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+      </svg>Add Bookshop
+    </button>
+    
+  </div>
+
+  <div class="col-12">
+    <div class="card mb-3 espacio" *ngFor="let shop of bookShop">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{shop.img}}" alt="Imagen" class="img-fluid rounded-start">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Name:</h5>
+            <p class="card-title">{{shop.name}}</p>
+            <h5 class="card-text">Location:</h5>
+            <p class="card-title">{{shop.location}}</p>
+            <h5 class="card-title">Description:</h5>
+            <p class="card-title">{{shop.description}}</p>
+
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95804.57686968184!2d2.115138192204743!3d41.376408793407826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2ed335b4225%3A0x9430f136cf2cccf4!2sCasa%20del%20Libro!5e0!3m2!1ses!2sus!4v1684828284230!5m2!1ses!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="card-text"><small class="text-muted">Última actualización hace 3 minutos</small></p>
+
+            <div class="d-flex">
+              <button *ngIf="isAdmin" button type="button" class="btn btn-danger mr-2" href="#" [routerLink]="['/bookshop/deleteBookshop',shop.name]" routerLinkActive="active">Delete Bookshop</button>
+              <button *ngIf="isAdmin" button type="button" class="btn btn-primary" href="#" [routerLink]="['/bookshop/updateBookShop',shop.name]" routerLinkActive="active">Update Bookshop</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+<!-- <app-navbar></app-navbar>
+
 <div class="row" *ngIf="bookShop.length!=0">
   <div class="espacio">
 
@@ -44,44 +102,4 @@
 </div>
 
 
-
-
-<!-- separador -->
-<!-- <div class="row" *ngIf="bookShop.length!=0">
-    <div class="espacio">
-
-        <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-          </svg>Back</button>
-
-    </div>
-<div class="card cartas" style="width: 19rem;" *ngFor="let shop of bookShop">
-    <img src="{{shop.img}}" class="card-img-top" alt="imagen_Card">
-    <div class="card-body">
-        <label><b>Name:</b></label>
-      <h5 class="card-title">{{shop.name}}</h5>
-      <label><b>Location:</b></label>
-      <p class="card-text">{{shop.location}}</p>
-      <label><b>Description:</b></label>
-      <p class="card-text">{{shop.description}}</p>
-      
-     
-       <a href="#" class="btn btn-primary">Go somewhere</a> 
-      <br>
-    </div>
-  </div>
-</div>
-<div class="row" *ngIf="bookShop.length==0">
-    <h4>We don't have books of that category</h4>
-    <div class="col-md-6 espaciado">
-
-        <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-          </svg>&nbsp;Back</button>
-
-    </div>
-</div> -->
-
-
-
-<app-footer></app-footer>
+<app-footer></app-footer> -->

@@ -33,27 +33,27 @@
     <ng-template pTemplate="header">
     
         <tr>
-          <th pSortableColumn="isbn">Isbn<p-sortIcon field="isbn"></p-sortIcon></th>
+          <th pSortableColumn="isbn" class="text-center">Isbn<p-sortIcon field="isbn"></p-sortIcon></th>
           <th>Imagen</th>
-          <th pSortableColumn="title">Title<p-sortIcon field="title"></p-sortIcon></th>
+          <th pSortableColumn="title" class="text-center">Title<p-sortIcon field="title"></p-sortIcon></th>
           <th>dateBook</th>
-          <th pSortableColumn="author">Author<p-sortIcon field="author"></p-sortIcon></th>
+          <th pSortableColumn="author" class="text-center">Author<p-sortIcon field="author"></p-sortIcon></th>
           <th>Category</th>
-          <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
+          <th pSortableColumn="price" class="text-center">Price<p-sortIcon field="price"></p-sortIcon></th>
           <th>stock</th>
           <th>Bookshop Avaible</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-book>
         <tr>
-          <td >{{book.isbn}}</td>
-          <td ><img [src]="book.img" width="120" height="120" alt="imagenBook"></td>
-          <td >{{book.title}}</td>
-          <td >{{book.dateBook}}</td>
-          <td >{{book.author}}</td>
-          <td >{{book.category.name}}</td>
-          <td >{{book.price}}</td>
-          <td >{{book.stock}}</td>
+          <td class="text-center">{{book.isbn}}</td>
+          <td class="text-center"><img [src]="book.img" width="120" height="120" alt="imagenBook"></td>
+          <td class="text-center">{{book.title}}</td>
+          <td class="text-center">{{book.dateBook}}</td>
+          <td class="text-center">{{book.author}}</td>
+          <td class="text-center">{{book.category.name}}</td>
+          <td class="text-center">{{book.price}}</td>
+          <td class="text-center">{{book.stock}}</td>
           <!-- <td >{{book.listAvaible.name}}</td> -->
           <td><span *ngFor="let shop of book.listAvaible">{{shop.name.name}}  <br> <hr></span></td> 
           <!--<td ><span *ngFor="let item of book.listFav" >{{item.user.username}}</span></td>-->

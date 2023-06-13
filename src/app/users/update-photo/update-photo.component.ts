@@ -17,7 +17,9 @@ export class UpdatePhotoComponent {
   jwt = localStorage.getItem("jwt")
   username!:string
   userActual!:user
+  file!: File | null;
 
+  mimeTypesAllowed: string[] = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg', 'image/webp'];
 
   userDetails!: string|null;
 
@@ -62,13 +64,31 @@ export class UpdatePhotoComponent {
   onFileChange(event:any) {
       
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.myForm.patchValue({
-        fileSource: file
-      });
-    }
-  }
-
+      this.file = event.target.files[0];
+      if(this.file!.size > 1048576) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wow, an error has occurred',
+          text: 'Images larger than 1 mb are not allowed'
+        })
+        // this.file=null
+      
+  }else if(!this.mimeTypesAllowed.includes(this.file?.type!)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Wow, an error has occurred',
+      text: 'The mimetype are not allowed'
+    })
+    // this.file = null;
+  }else {
+    this.myForm.patchValue({
+      fileSource: this.file
+    })
+    
+  } 
+  
+ }
+}
 
   save(){
     if(this.myForm.valid){

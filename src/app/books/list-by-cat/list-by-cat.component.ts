@@ -49,8 +49,8 @@ export class ListByCatComponent {
 
     Swal.fire({
       icon: 'success',
-      title: 'Artículo añadido',
-      text: 'Artículo añadido',
+      title: 'Article add',
+      text: 'Article add',
   });
   }
 

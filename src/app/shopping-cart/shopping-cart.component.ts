@@ -96,8 +96,8 @@ export class ShoppingCartComponent {
               if(resp){
                 Swal.fire({
                   icon: 'success',
-                  title: 'Compra exitosa',
-                  text: '¡Disfuta sus libros!',
+                  title: 'Successful purchase',
+                  text: '¡Enjoy your books!',
               })
                 this.shopping.clearCart()
                 this.route.navigate(['/books/list'])

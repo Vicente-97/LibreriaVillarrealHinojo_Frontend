@@ -1,7 +1,7 @@
 
 <app-navbar></app-navbar>
 
-<div class="row" *ngIf="books.length!=0">
+<div class="row justify-content-center" *ngIf="books.length!=0">
     <div class="espacio">
 
         <button button type="button" class="btn btn-danger" href="#" [routerLink]="['/category/list']" routerLinkActive="active" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
@@ -9,7 +9,7 @@
           </svg>Back</button>
 
     </div>
-<div class="card cartas" style="width: 18rem;" *ngFor="let book of books">
+<div class="card cartas " style="width: 18rem;" *ngFor="let book of books">
     <img src="{{book.img}}" class="card-img-top" alt="imagen_Card">
     <div class="card-body">
       <h5 class="card-title">{{book.title}}</h5>

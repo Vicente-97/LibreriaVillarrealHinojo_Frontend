@@ -31,11 +31,11 @@ html {
     100% { transform: scale(1); }
   }
 
-  /* @media (max-width: 1250px) 
+  @media (max-width: 1270px) 
   {     .nav-item{  
          margin-left: 2em; 
        }
-   } */
+   }
 
 
   

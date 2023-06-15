@@ -31,7 +31,7 @@ html {
     100% { transform: scale(1); }
   }
 
-  @media (max-width: 990px) 
+  @media (max-width: 1250px) 
   {     .nav-item{       margin-left: 2em;      }
    }
 

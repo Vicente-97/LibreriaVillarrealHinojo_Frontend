@@ -32,12 +32,6 @@ html {
   }
 
   @media (max-width: 1250px) {
-    /* Estilos CSS para pantallas con un ancho máximo de 1250px */
-    /* Aquí puedes agregar los estilos para hacer el navbar responsive */
-    /* Por ejemplo, puedes cambiar la visualización de los elementos o modificar su diseño */
-    .navbar-nav {
-      flex-direction: column;
-    }
     
     .nav-item {
       margin-bottom: 10px;

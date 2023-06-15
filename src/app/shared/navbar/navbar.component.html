@@ -47,8 +47,8 @@
             </li>
               
             </ul>
-            <div class="cart-badge d-flex" *ngIf="logueado" align="right">
-            <button type="button" class="btn btn-outline-dark " [routerLink]="['/shopping/list']">
+            <div class="d-flex" *ngIf="logueado" align="right">
+            <button type="button" class="btn btn-outline-dark nav-item" [routerLink]="['/shopping/list']">
               <i class="fas fa-shopping-cart fa-lg" #iconoCarrito></i>
               <span class="badge badge-pill badge-primary text-dark">{{ carrito.length }}</span>
             </button>

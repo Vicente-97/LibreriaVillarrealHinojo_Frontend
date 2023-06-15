@@ -69,8 +69,9 @@
             <ul class="navbar-nav mb-lg-0  me-4 ">
               <li class="nav-item dropdown dropdown-menu-right">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="logueado" >
-                  <img src="{{user.img}}"  default class="d-block img-fluid logoUser imgRedonda"  alt="logoUser" width="50px" height="50px" >
+                  <img src="{{user.img}}"  default class="rounded-circle"  alt="logoUser" width="50px" height="50px" >
                 </a>
+                <!-- d-block img-fluid logoUser imgRedonda -->
                 
                   <button  *ngIf="!logueado" class=" btn btn-primary" [routerLink]="['/login']"> Log in</button>
     

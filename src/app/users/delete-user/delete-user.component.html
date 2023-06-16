@@ -1,5 +1,5 @@
 <body>
-    <div class="container">
+    <div class="container" *ngIf="user">
       <h1 class="heading">Delete User</h1>
       <form class="form"  action="#" method="post" #deleteUser="ngForm" (ngSubmit)="deletedUser()">
         <div class="form-group">

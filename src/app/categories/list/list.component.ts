@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
     this.categoriesServ.getCategories()
       .subscribe({
         next: resp => this.categories = resp,
-        error: (error) => console.log(error)
+        
       })
   }
 
